@@ -1,0 +1,22 @@
+{% load staticfiles %}{% load compress %}{% load i18n %}{% load helpers %}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="" rel="icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% compress css %}
+        <link href="{% static 'libs/css/bootstrap-4.0.0-beta.2.min.css' %}" rel="stylesheet" id="bootstrap-css">
+        <link href="{% static 'libs/css/font-awesome-4.7.0.min.css' %}" rel="stylesheet">
+    {% endcompress %}
+</head>
+<body>
+{% block content %}{% endblock %}
+{% compress js %}
+    <script src="{% static 'libs/js/jquery-3.1.1.slim.min.js' %}"></script>
+    <script src="{% static 'libs/js/tether-1.4.0.min.js' %}"></script>
+    <script src="{% static 'libs/js/bootstrap-4.0.0-alpha.6.min.js' %}"></script>
+{% endcompress %}
+</body>
+</html>
