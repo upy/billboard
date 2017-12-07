@@ -1,7 +1,7 @@
 {% extends "base.html" %}{% load i18n %}
 
 {% block title %}{% trans 'Login' %}{% endblock %}
-{% block content %}
+{% block layout_content %}
     <div class="container mt-5">
         <form class="form-horizontal" role="form" method="post" action="{% url 'login' %}">
             {% csrf_token %}

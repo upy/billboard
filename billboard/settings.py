@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'compressor',
 
+    'profiles',
 ]
 
 MIDDLEWARE = [
@@ -231,14 +232,12 @@ LOGGING = {
 if DEBUG:
     from fnmatch import fnmatch
 
-
     class WildcardNetwork(list):
         def __contains__(self, key):
             for address in self:  # pragma no coverage
                 if fnmatch(key, address):
                     return True
             return False  # pragma no coverage
-
 
     INTERNAL_IPS = WildcardNetwork(['127.0.0.1', '10.1.1.*', '192.168.0.*'])
 
