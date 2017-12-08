@@ -18,4 +18,4 @@ sphinx_rtd_theme==0.2.4
 sphinxcontrib-napoleon==0.6.1
 tzlocal==1.5.1
 uuid==1.30
-Werkzeug==0.12.2
+Werkzeug==0.13
