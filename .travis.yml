@@ -9,8 +9,10 @@ services:
 
 install:
   - pip install -r requirements.txt
+  - pip install codecov
 
-script: python manage.py test
+script:
+  - codecov
 
 addons:
   postgresql: "9.6"
