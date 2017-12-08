@@ -1,13 +1,20 @@
 language: python
+
 python:
   - "3.6"
+
 services:
   - postgresql
+  - memcached
+
 install:
   - pip install -r requirements.txt
+
 script: python manage.py test
+
 addons:
   postgresql: "9.6"
+
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp billboard/env.travis billboard/.env
