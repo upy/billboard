@@ -2,7 +2,7 @@
 
 {% block title %}{% trans 'Login' %}{% endblock %}
 {% block layout_content %}
-    <div class="container mt-5">
+    <div class="container">
         <form class="form-horizontal" role="form" method="post" action="{% url 'login' %}">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ next }}"/>
@@ -32,7 +32,7 @@
                     <div class="form-group has-danger">
                         <label class="sr-only" for="username">{{ form.username.label }}</label>
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem">
+                            <div class="input-group-addon">
                                 <i class="fa fa-user-o"></i></div>
                             <input type="text" name="{{ form.username.name }}" class="form-control" id="username" placeholder="{{ form.username.label }}" required autofocus>
                         </div>
@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label class="sr-only" for="password">Password</label>
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem">
+                            <div class="input-group-addon">
                                 <i class="fa fa-key"></i></div>
                             <input type="password" name="{{ form.password.name }}" class="form-control" id="password" placeholder="{{ form.password.label }}" required>
                         </div>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="padding-top: 1rem">
+            <div class="row py-3">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-success">
