@@ -23,6 +23,7 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
+            cp billboard/env.travis billboard/.env
             pip install --upgrade setuptools
             pip install -r requirements.txt
 
