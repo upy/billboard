@@ -1,4 +1,4 @@
-{% load staticfiles %}{% load i18n %}
+{% load staticfiles i18n %}
 <header>
     <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
         <a class="navbar-brand" href="{% url 'dashboard' %}">Billboard</a>
@@ -13,7 +13,7 @@
         </div>
         <ul class="nav navbar-nav ml-auto">
             <li class="nav-item">
-                <a href="{% url 'logout' %}" title="{% trans 'logout' %}">
+                <a href="{% url 'logout' %}" title="{% trans 'Logout' %}">
                     <i class="fa fa-sign-out fa-2x py-2 p-1 text-danger"></i>
                 </a>
             </li>
