@@ -9,3 +9,5 @@
 ``cd staticfiles/libs/``
 
 ``yarn install`` or ``npm install``
+
+#### Project status: `development` 
