@@ -26,29 +26,48 @@
                     <div class="col-md-3"></div>
                 </div>
             {% endif %}
-            {% for field in form %}
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-{{ field.name }}">
-                                <i class="fa {% if field.name == 'username' %}fa-user-o{% else %}fa-key{% endif %}"></i></span>
+                            <span class="input-group-text" id="basic-username">
+                                <i class="fa fa-user-o"></i></span>
                         </div>
-                        <input type="text" name="{{ field.name }}" class="form-control" id="{{ field.name }}" placeholder="{{ field.label }}" required autofocus aria-label="{{ field.label }}" aria-describedby="basic-{{ field.name }}">
+                        <input type="text" name="{{ form.username.name }}" class="form-control" id="{{ form.username.name }}" placeholder="{{ form.username.label }}" required autofocus aria-label="{{ form.username.label }}" aria-describedby="basic-username">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle">
-                            {% if field.errors %}
-                                {{ field.errors.as_text }}
+                            {% if form.username.errors %}
+                                {{ form.username.errors.as_text }}
                             {% endif %}
                         </span>
                     </div>
                 </div>
             </div>
-            {% endfor %}
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-password">
+                                <i class="fa fa-key"></i></span>
+                        </div>
+                        <input type="password" name="{{ form.password.name }}" class="form-control" id="{{ form.password.name }}" placeholder="{{ form.password.label }}" required autofocus aria-label="{{ form.password.label }}" aria-describedby="basic-password">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            {% if form.password.errors %}
+                                {{ form.password.errors.as_text }}
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+            </div>
             <div class="row py-3">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
