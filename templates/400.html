@@ -1,0 +1,41 @@
+{% extends "base.html" %}{% load i18n compress %}
+
+{% block title %}{% trans '400 bad request' %}{% endblock %}
+{% block layout_content %}
+    {% compress css %}
+        <style>
+            .error-template {
+                padding: 40px 15px;
+                text-align: center;
+            }
+
+            .error-actions {
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+
+            .error-actions .btn {
+                margin-right: 10px;
+            }
+        </style>
+    {% endcompress %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="error-template">
+                    <h1>Oops!</h1>
+                    <h2>{% trans '400 Bad Request' %}</h2>
+                    <div class="error-details">
+                        {% trans 'The server cannot process the request due to something that is perceived to be a client error.' %}
+                    </div>
+                    <div class="error-actions">
+                        <a href="{% url 'login' %}" class="btn btn-info btn-lg">
+                            <span class="fa fa-home"></span> {% trans 'take me home' %}
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
