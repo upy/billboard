@@ -2,23 +2,6 @@
 
 {% block title %}{% trans '403 permission error' %}{% endblock %}
 {% block layout_content %}
-    {% compress css %}
-        <style>
-            .error-template {
-                padding: 40px 15px;
-                text-align: center;
-            }
-
-            .error-actions {
-                margin-top: 15px;
-                margin-bottom: 15px;
-            }
-
-            .error-actions .btn {
-                margin-right: 10px;
-            }
-        </style>
-    {% endcompress %}
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -26,12 +9,22 @@
                     <h1>Oops!</h1>
                     <h2>{% trans '403 Access Denied' %}</h2>
                     <div class="error-details">
-                        {% trans "The requested resource requires an authentication." %}
+                        {% if exception %}
+                            {{ exception }}
+                        {% else %}
+                            {% trans "The requested resource requires an authentication." %}
+                        {% endif %}
                     </div>
                     <div class="error-actions">
-                        <a href="{% url 'login' %}" class="btn btn-info btn-lg">
-                            <span class="fa fa-home"></span> {% trans 'take me home' %}
-                        </a>
+                        {% if exception %}
+                            <a href="javascript:history.back()" class="btn btn-info btn-lg">
+                                <span class="fa fa-home"></span> {% trans 'back' %}
+                            </a>
+                        {% else %}
+                            <a href="{% url 'main' %}" class="btn btn-info btn-lg">
+                                <span class="fa fa-home"></span> {% trans 'take me home' %}
+                            </a>
+                        {% endif %}
                     </div>
 
                 </div>
