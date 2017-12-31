@@ -13,6 +13,7 @@ class Representative(User):
                              help_text=_('ex: +901234567890'))
 
     class Meta:
+        default_permissions = ('add', 'change', 'delete', 'view')
         db_table = 'representative'
         verbose_name = _('Representative')
         verbose_name_plural = _('Representatives')
