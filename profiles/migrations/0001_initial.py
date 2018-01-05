@@ -17,12 +17,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Representative',
             fields=[
-                ('user_ptr', models.OneToOneField(auto_created=True,
-                                                  on_delete=django.db.models.deletion.CASCADE,
-                                                  parent_link=True,
-                                                  primary_key=True,
-                                                  serialize=False,
-                                                  to=settings.AUTH_USER_MODEL)),
+                ('user_ptr', models.OneToOneField(
+                    auto_created=True,
+                    on_delete=django.db.models.deletion.CASCADE,
+                    parent_link=True,
+                    primary_key=True,
+                    serialize=False,
+                    to=settings.AUTH_USER_MODEL)),
                 ('phone',
                  models.CharField(help_text='ex: +901234567890', max_length=30,
                                   verbose_name='Phone')),
