@@ -1,11 +1,11 @@
 {% extends 'main/layout.html' %}{% load i18n %}
-{% block title %}{% trans 'Representative update' %}{% endblock %}
+{% block title %}{% trans 'Representative add' %}{% endblock %}
 
 {% block content %}
     <div class="page-header">
-        <h2>{% trans 'Representative update' %}</h2>
+        <h2>{% trans 'Representative add' %}</h2>
     </div>
-    <p class="lead">{% trans "Representative details." %}</p>
+    <p class="lead">{% trans "New representative." %}</p>
     <hr>
     <form method="post">
         {% csrf_token %}
@@ -33,7 +33,7 @@
                             <input type="checkbox" name="{{ field.name }}" id="id_{{ field.name }}" class="form-control" aria-describedby="{{ field.name }}HelpBlock"
                                     {% if field.value == True %} checked{% endif %}>
                         {% else %}
-                            <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="id_{{ field.name }}" class="form-control" aria-describedby="{{ field.name }}HelpBlock" value="{{ field.value }}">
+                            <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="id_{{ field.name }}" class="form-control" aria-describedby="{{ field.name }}HelpBlock" value="{% if field.value %}{{ field.value }}{% endif %}">
                         {% endif %}
                         {% if field.errors %}
                             <span class="form-text text-danger">{{ field.errors|striptags }}</span>
@@ -47,7 +47,7 @@
         </div>
         <div class="submit-row float-sm-right">
             <button type="submit" class="btn btn-primary">
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> {% trans 'update' %}
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> {% trans 'save' %}
             </button>
         </div>
     </form>
