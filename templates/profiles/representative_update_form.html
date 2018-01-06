@@ -33,7 +33,7 @@
                             <input type="checkbox" name="{{ field.name }}" id="id_{{ field.name }}" class="form-control" aria-describedby="{{ field.name }}HelpBlock"
                                     {% if field.value == True %} checked{% endif %}>
                         {% else %}
-                            <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="id_{{ field.name }}" class="form-control" aria-describedby="{{ field.name }}HelpBlock" value="{{ field.value }}">
+                            <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="id_{{ field.name }}" class="form-control" aria-describedby="{{ field.name }}HelpBlock" value="{{ field.value }}"{% if field.field.required %} required{% endif %}>
                         {% endif %}
                         {% if field.errors %}
                             <span class="form-text text-danger">{{ field.errors|striptags }}</span>
