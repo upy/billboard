@@ -2,7 +2,7 @@ django==2.0.1
 django-appconf==1.0.2
 django-compressor==2.2
 django-environ==0.4.4
-django-extensions==1.9.8
+django-extensions==1.9.9
 psycopg2==2.7.3.2
 python-memcached==1.59
 pytz==2017.3

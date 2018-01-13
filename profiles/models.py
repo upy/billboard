@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class Representative(User):
     """
-    The Representative class defines the main storage point for the customer
+    The Representative class defines the main storage point for the advertiser
     representative.
 
     """
