@@ -37,6 +37,7 @@ class Board(models.Model):
                                     on_delete=models.CASCADE)
 
     class Meta:
+        default_permissions = ('add', 'change', 'delete', 'view')
         db_table = 'board'
         verbose_name = _('Board')
         verbose_name_plural = _('Boards')

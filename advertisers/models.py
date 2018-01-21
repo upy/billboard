@@ -11,6 +11,7 @@ class Advertiser(models.Model):
     email = models.EmailField(_('E-mail'), help_text=_('E-mail address'))
 
     class Meta:
+        default_permissions = ('add', 'change', 'delete', 'view')
         db_table = 'advertiser'
         verbose_name = _('Advertiser')
         verbose_name_plural = _('Advertisers')
@@ -29,6 +30,7 @@ class Address(models.Model):
     country = models.CharField(_('Country'), max_length=100)
 
     class Meta:
+        default_permissions = ('add', 'change', 'delete', 'view')
         db_table = 'address'
         verbose_name = _('Address')
         verbose_name_plural = _('Addresses')
@@ -52,6 +54,7 @@ class BillingAddress(models.Model):
     country = models.CharField(_('Country'), max_length=100)
 
     class Meta:
-        proxy = True
+        default_permissions = ('add', 'change', 'delete', 'view')
+        db_table = 'billing_address'
         verbose_name = _('Billing address')
         verbose_name_plural = _('Billing addresses')
