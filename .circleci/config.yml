@@ -30,6 +30,7 @@ jobs:
       - run:
           name: staticfiles
           command: |
+            . venv/bin/activate
             python manage.py collectstatic
 
       - save_cache:
