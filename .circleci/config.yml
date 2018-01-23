@@ -27,6 +27,11 @@ jobs:
             pip install --upgrade setuptools
             pip install -r requirements.txt
 
+      - run:
+          name: staticfiles
+          command: |
+            python manage.py collectstatic
+
       - save_cache:
           paths:
             - ./venv
