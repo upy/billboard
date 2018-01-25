@@ -17,24 +17,20 @@ class LoggedInRepresentativeUpdateView(SuccessMessageMixin, UpdateView):
     The view class for editing the loggedIn representative details. It will
     have authorized to edit only self-details.
     """
-    success_message = _('Your profile was changed.')
     model = models.Representative
     fields = ['username', 'first_name', 'last_name', 'email', 'phone']
     template_name = 'profiles/profile_update_form.html'
     success_url = reverse_lazy('profile')
+    success_message = _('Your profile was changed.')
 
     def get_object(self, queryset=None):
-        """
-        Return the current loggedIn representative instance.
-        """
+        """Return the current loggedIn representative instance."""
         return self.request.user.representative
 
 
 @method_decorator(decorators, name='dispatch')
 class RepresentativeListView(PermissionRequiredMixin, ListView):
-    """
-    The view class for the list of the representatives.
-    """
+    """The view class for the list of the representatives."""
     raise_exception = True
     permission_denied_message = _(
         'You do not have permission to see representatives.')
@@ -46,9 +42,7 @@ class RepresentativeListView(PermissionRequiredMixin, ListView):
 @method_decorator(decorators, name='dispatch')
 class RepresentativeUpdateView(SuccessMessageMixin, PermissionRequiredMixin,
                                UpdateView):
-    """
-    The view class for the updating a representative details.
-    """
+    """The view class for the updating a representative details."""
     raise_exception = True
     permission_denied_message = _(
         'You do not have permission to change representative.')
@@ -64,9 +58,7 @@ class RepresentativeUpdateView(SuccessMessageMixin, PermissionRequiredMixin,
 @method_decorator(decorators, name='dispatch')
 class RepresentativeCreateView(SuccessMessageMixin, PermissionRequiredMixin,
                                CreateView):
-    """
-    The view class for creating a new representative.
-    """
+    """The view class for creating a new representative."""
     raise_exception = True
     permission_denied_message = _(
         'You do not have permission to add representative.')
