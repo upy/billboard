@@ -7,9 +7,13 @@ services:
   - postgresql
   - memcached
 
+node_js:
+  - "9.4.0"
+
 install:
   - pip install -r requirements.txt
   - pip install codecov
+  - npm install --prefix ./staticfiles/lib
 
 script:
   - coverage run manage.py test
@@ -21,5 +25,6 @@ addons:
   postgresql: "9.6"
 
 before_script:
+  - python manage.py collectstatic
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp billboard/env.travis billboard/.env
