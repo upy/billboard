@@ -27,17 +27,13 @@ jobs:
             cp billboard/env.travis billboard/.env
             pip install --upgrade setuptools
             pip install -r requirements.txt
-
-      - run:
-          name: staticfiles
-          command: |
             npm install --prefix ./staticfiles/libs
-            . venv/bin/activate
             python manage.py collectstatic
 
       - save_cache:
           paths:
             - ./venv
+            - staticfiles/libs/node_modules
           key: v1-dependencies-{{ checksum "requirements.txt" }}
 
       - run:
