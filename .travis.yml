@@ -13,7 +13,7 @@ node_js:
 install:
   - pip install -r requirements.txt
   - pip install codecov
-  - npm install --prefix ./staticfiles/lib
+  - npm install --prefix ./staticfiles/libs
 
 script:
   - coverage run manage.py test
