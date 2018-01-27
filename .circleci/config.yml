@@ -9,22 +9,6 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_DB: travis_ci_test
 
-    working_directory: ~/repo/staticfiles/libs
-
-    steps:
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
-      - run:
-          name: install js
-          command: |
-            npm install
-
-      - save_cache:
-          key: node
-          paths:
-            - node_modules
     working_directory: ~/repo
 
     steps:
@@ -47,6 +31,7 @@ jobs:
       - run:
           name: staticfiles
           command: |
+            npm install --prefix ./staticfiles/libs
             . venv/bin/activate
             python manage.py collectstatic
 
