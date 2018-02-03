@@ -1,11 +1,11 @@
 {% extends 'main/layout.html' %}{% load i18n %}
-{% block title %}{% trans 'Representative add' %}{% endblock %}
+{% block title %}{% trans 'Customer update' %}{% endblock %}
 
 {% block content %}
     <div class="page-header">
-        <h2>{% trans 'Representative add' %}</h2>
+        <h2>{% trans 'Customer update' %}</h2>
     </div>
-    <p class="lead">{% trans "New representative." %}</p>
+    <p class="lead">{% trans "Customer details." %}</p>
     <hr>
     <form method="post">
         {% csrf_token %}
@@ -14,9 +14,8 @@
                 <div class="alert alert-success">
                     <ul class="list-unstyled">
                         {% for message in messages %}
-                            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
-                                {{ message }}
-                            </li>
+                            <li
+                                    {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -34,7 +33,7 @@
                             <input type="checkbox" name="{{ field.name }}" id="id_{{ field.name }}" class="form-control" aria-describedby="{{ field.name }}HelpBlock"
                                     {% if field.value == True %} checked{% endif %}>
                         {% else %}
-                            <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="id_{{ field.name }}" class="form-control" aria-describedby="{{ field.name }}HelpBlock" value="{% if field.value %}{{ field.value }}{% endif %}"{% if field.field.required %} required{% endif %}>
+                            <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="id_{{ field.name }}" class="form-control" aria-describedby="{{ field.name }}HelpBlock" value="{{ field.value }}"{% if field.field.required %} required{% endif %}>
                         {% endif %}
                         {% if field.errors %}
                             <span class="form-text text-danger">{{ field.errors|striptags }}</span>
@@ -48,7 +47,7 @@
         </div>
         <div class="submit-row float-sm-right">
             <button type="submit" class="btn btn-primary">
-                <i class="fa fa-plus-circle" aria-hidden="true"></i> {% trans 'save' %}
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> {% trans 'update' %}
             </button>
         </div>
     </form>

@@ -1,11 +1,11 @@
 {% extends 'main/layout.html' %}{% load i18n %}
-{% block title %}{% trans 'Representative add' %}{% endblock %}
+{% block title %}{% trans 'Customer add' %}{% endblock %}
 
 {% block content %}
     <div class="page-header">
-        <h2>{% trans 'Representative add' %}</h2>
+        <h2>{% trans 'Customer add' %}</h2>
     </div>
-    <p class="lead">{% trans "New representative." %}</p>
+    <p class="lead">{% trans "New Customer." %}</p>
     <hr>
     <form method="post">
         {% csrf_token %}

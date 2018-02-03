@@ -1,0 +1,48 @@
+{% extends 'main/layout.html' %}{% load i18n %}
+{% block title %}{% trans 'Customers list' %}{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h2>{% trans 'Customers list' %}</h2>
+    </div>
+    <p class="lead">{% trans "All Customers list." %}</p>
+    <hr>
+    {% if messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <ul class="list-unstyled">
+                {% for message in messages %}
+                    <li
+                            {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <div>
+        <a class="btn btn-info float-sm-right" href="{% url 'advertiser-add' %}">+</a>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">{% trans 'Name' %}</th>
+            <th scope="col">{% trans 'E-mail' %}</th>
+            <th scope="col">{% trans 'Actions' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for advertiser in object_list %}
+            <tr>
+                <td>{{ advertiser.name }}</td>
+                <td>{{ advertiser.email }}</td>
+                <td>
+                    <a href="{% url 'advertiser-update' pk=advertiser.pk %}" class="btn btn-primary">
+                        <span class="fa fa-edit" aria-hidden="true"></span>
+                        <span>{% trans 'edit' %}</span></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
