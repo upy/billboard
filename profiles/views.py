@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.exceptions import PermissionDenied
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
@@ -25,7 +26,12 @@ class LoggedInRepresentativeUpdateView(SuccessMessageMixin, UpdateView):
 
     def get_object(self, queryset=None):
         """Return the current loggedIn representative instance."""
-        return self.request.user.representative
+        try:
+            representative = self.request.user.representative
+        except (AttributeError,):
+            raise PermissionDenied(_('Your profile does not exist.'))
+        else:
+            return representative
 
 
 @method_decorator(decorators, name='dispatch')
