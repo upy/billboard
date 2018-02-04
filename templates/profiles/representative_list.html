@@ -21,16 +21,16 @@
         </div>
     {% endif %}
 
-    <div>
-        <a class="btn btn-info float-sm-right" href="{% url 'representative-add' %}">+</a>
-    </div>
+    <p class="mb-2 text-right">
+        <a class="btn btn-info" href="{% url 'representative-add' %}">+</a>
+    </p>
     <table class="table table-hover">
         <thead>
         <tr>
             <th scope="col">{% trans 'First name' %}</th>
             <th scope="col">{% trans 'Last name' %}</th>
             <th scope="col">{% trans 'Phone' %}</th>
-            <th scope="col">{% trans 'Actions' %}</th>
+            <th scope="col" class="text-center">{% trans 'Actions' %}</th>
         </tr>
         </thead>
         <tbody>
@@ -39,7 +39,7 @@
                 <td>{{ representative.first_name }}</td>
                 <td>{{ representative.last_name }}</td>
                 <td>{{ representative.phone }}</td>
-                <td>
+                <td class="text-center">
                     <a href="{% url 'representative-update' pk=representative.pk %}" class="btn btn-primary">
                         <span class="fa fa-edit" aria-hidden="true"></span>
                         <span>{% trans 'edit' %}</span></a></td>

@@ -1,11 +1,11 @@
 {% extends 'main/layout.html' %}{% load i18n %}
-{% block title %}{% trans 'Customers list' %}{% endblock %}
+{% block title %}{% trans 'Customer list' %}{% endblock %}
 
 {% block content %}
     <div class="page-header">
-        <h2>{% trans 'Customers list' %}</h2>
+        <h2>{% trans 'Customer list' %}</h2>
     </div>
-    <p class="lead">{% trans "All Customers list." %}</p>
+    <p class="lead">{% trans "All Customer list." %}</p>
     <hr>
     {% if messages %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -21,15 +21,15 @@
         </div>
     {% endif %}
 
-    <div>
-        <a class="btn btn-info float-sm-right" href="{% url 'advertiser-add' %}">+</a>
-    </div>
+    <p class="mb-2 text-right">
+        <a class="btn btn-info" href="{% url 'advertiser-add' %}">+</a>
+    </p>
     <table class="table table-hover">
         <thead>
         <tr>
             <th scope="col">{% trans 'Name' %}</th>
             <th scope="col">{% trans 'E-mail' %}</th>
-            <th scope="col">{% trans 'Actions' %}</th>
+            <th scope="col" class="text-center">{% trans 'Actions' %}</th>
         </tr>
         </thead>
         <tbody>
@@ -37,7 +37,7 @@
             <tr>
                 <td>{{ advertiser.name }}</td>
                 <td>{{ advertiser.email }}</td>
-                <td>
+                <td class="text-center">
                     <a href="{% url 'advertiser-update' pk=advertiser.pk %}" class="btn btn-primary">
                         <span class="fa fa-edit" aria-hidden="true"></span>
                         <span>{% trans 'edit' %}</span></a></td>
