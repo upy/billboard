@@ -10,15 +10,23 @@ class AdvertiserForm(forms.ModelForm):
         fields = ['name', 'email', ]
 
 
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = models.Address
+        fields = ['street', 'zip_code', 'county', 'city', 'country']
+
+
+class BillingAddressForm(forms.ModelForm):
+    class Meta:
+        model = models.BillingAddress
+        fields = ['title', 'street', 'zip_code', 'email', 'tax_office',
+                  'tax_number', 'county', 'city', 'country']
+
+
 AddressFormSet = inlineformset_factory(models.Advertiser, models.Address,
-                                       fields=['street', 'zip_code', 'county',
-                                               'city', 'country'],
-                                       extra=0)
+                                       form=AddressForm,
+                                       extra=1)
 BillingAddressFormSet = inlineformset_factory(models.Advertiser,
                                               models.BillingAddress,
-                                              fields=['title', 'street',
-                                                      'zip_code', 'email',
-                                                      'tax_office',
-                                                      'tax_number', 'county',
-                                                      'city', 'country'],
-                                              extra=0)
+                                              form=BillingAddressForm,
+                                              extra=1)

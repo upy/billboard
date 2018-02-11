@@ -6,6 +6,7 @@ from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import ListView, CreateView, UpdateView
 
+from advertisers import forms
 from . import models
 
 decorators = [login_required, ]
@@ -30,11 +31,23 @@ class AdvertiserCreateView(SuccessMessageMixin, PermissionRequiredMixin,
     permission_denied_message = _(
         'You do not have permission to add advertiser.')
     permission_required = ('advertisers.add_advertiser',)
-    fields = ['name', 'email', ]
+    form_class = forms.AdvertiserForm
     model = models.Advertiser
     success_message = _('Advertiser details were added.')
     template_name = 'advertisers/advertiser_create_form.html'
     success_url = reverse_lazy('advertiser-list')
+
+    def get(self, request, *args, **kwargs):
+        """
+        Handle GET requests: instantiate a blank version of the form and
+        formsets.
+        """
+        self.object = None
+        return self.render_to_response(self.get_context_data(
+            form=self.get_form(),
+            address_form_set=forms.AddressFormSet(prefix='address'),
+            billing_address_form_set=forms.BillingAddressFormSet(
+                prefix='billing_address')))
 
 
 @method_decorator(decorators, name='dispatch')
@@ -47,6 +60,18 @@ class AdvertiserUpdateView(SuccessMessageMixin, PermissionRequiredMixin,
     permission_required = ('advertisers.change_advertiser',)
     model = models.Advertiser
     success_message = _('Customer details were changed.')
-    fields = ['name', 'email', ]
+    form_class = forms.AdvertiserForm
     template_name = 'advertisers/advertiser_update_form.html'
     success_url = reverse_lazy('advertiser-list')
+
+    def get(self, request, *args, **kwargs):
+        """
+        Handle GET requests: instantiate a blank version of the form and
+        formsets.
+        """
+        self.object = self.get_object()
+        return self.render_to_response(self.get_context_data(
+            form=self.get_form(),
+            address_form_set=forms.AddressFormSet(prefix='address'),
+            billing_address_form_set=forms.BillingAddressFormSet(
+                prefix='billing_address')))

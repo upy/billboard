@@ -25,25 +25,93 @@
                     {% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
                 </p>
             {% endif %}
-            {% for field in form %}
-                <div class="form-group row">
-                    <label for="id_{{ field.name }}" class="col-sm-2 col-form-label">{{ field.label }}</label>
-                    <div class="col-sm-10">
-                        {% if field.field.widget.input_type == 'checkbox' %}
-                            <input type="checkbox" name="{{ field.name }}" id="id_{{ field.name }}" class="form-control" aria-describedby="{{ field.name }}HelpBlock"
-                                    {% if field.value == True %} checked{% endif %}>
-                        {% else %}
-                            <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="id_{{ field.name }}" class="form-control" aria-describedby="{{ field.name }}HelpBlock" value="{{ field.value }}"{% if field.field.required %} required{% endif %}>
-                        {% endif %}
-                        {% if field.errors %}
-                            <span class="form-text text-danger">{{ field.errors|striptags }}</span>
-                        {% endif %}
-                        <small class="form-text text-muted" id="{{ field.name }}HelpBlock">
-                            {{ field.help_text | safe }}
-                        </small>
+            <fieldset class="form-group">
+                <legend>{% trans 'Customer' %}</legend>
+                {% for field in form %}
+                    <div class="form-group row">
+                        <label for="id_{{ field.name }}" class="col-sm-2 col-form-label">{{ field.label }}</label>
+                        <div class="col-sm-10">
+                            {% if field.field.widget.input_type == 'checkbox' %}
+                                <input type="checkbox" name="{{ field.name }}" id="id_{{ field.name }}" class="form-control" aria-describedby="{{ field.name }}HelpBlock"{% if field.value == True %} checked{% endif %}>
+                            {% else %}
+                                <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="id_{{ field.name }}" class="form-control" aria-describedby="{{ field.name }}HelpBlock" value="{% if field.value %}{{ field.value }}{% endif %}"{% if field.field.required %} required{% endif %}>
+                            {% endif %}
+                            {% if field.errors %}
+                                <span class="form-text text-danger">{{ field.errors|striptags }}</span>
+                            {% endif %}
+                            <small class="form-text text-muted" id="{{ field.name }}HelpBlock">
+                                {{ field.help_text | safe }}
+                            </small>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </fieldset>
+            <fieldset class="form-group">
+                <legend>{% trans 'Address' %}</legend>
+                {{ address_form_set.management_form }}
+                {% for inline_form in address_form_set %}
+                    {% if inline_form.errors %}
+                        <p class="alert alert-danger" role="alert">
+                            {% if inline_form.errors.items|length == 1 %}
+                                {% trans "Please correct the error below." %}
+                            {% else %}
+                                {% trans "Please correct the errors below." %}
+                            {% endif %}
+                        </p>
+                    {% endif %}
+                    {% for field in inline_form %}
+                        <div class="form-group row">
+                            <label for="id_{{ inline_form.prefix }}-{{ field.name }}" class="col-sm-2 col-form-label">{{ field.label }}</label>
+                            <div class="col-sm-10">
+                                {% if field.field.widget.input_type == 'checkbox' %}
+                                    <input type="checkbox" name="{{ inline_form.prefix }}-{{ field.name }}" id="id_{{ inline_form.prefix }}-{{ field.name }}" class="form-control" aria-describedby="{{ inline_form.prefix }}-{{ field.name }}HelpBlock"{% if field.value == True %} checked{% endif %}>
+                                {% else %}
+                                    <input type="{{ field.field.widget.input_type }}" name="{{ inline_form.prefix }}-{{ field.name }}" id="id_{{ inline_form.prefix }}-{{ field.name }}" class="form-control" aria-describedby="{{ inline_form.prefix }}-{{ field.name }}HelpBlock" value="{% if field.value %}{{ field.value }}{% endif %}"{% if field.field.required %} required{% endif %}>
+                                {% endif %}
+                                {% if field.errors %}
+                                    <span class="form-text text-danger">{{ field.errors|striptags }}</span>
+                                {% endif %}
+                                <small class="form-text text-muted" id="{{ inline_form.prefix }}-{{ field.name }}HelpBlock">
+                                    {{ field.help_text | safe }}
+                                </small>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </fieldset>
+            <fieldset class="form-group">
+                <legend>{% trans 'Billing Address' %}</legend>
+                {{ billing_address_form_set.management_form }}
+                {% for inline_form in billing_address_form_set %}
+                    {% if inline_form.errors %}
+                        <p class="alert alert-danger" role="alert">
+                            {% if inline_form.errors.items|length == 1 %}
+                                {% trans "Please correct the error below." %}
+                            {% else %}
+                                {% trans "Please correct the errors below." %}
+                            {% endif %}
+                        </p>
+                    {% endif %}
+                    {% for field in inline_form %}
+                        <div class="form-group row">
+                            <label for="id_{{ inline_form.prefix }}-{{ field.name }}" class="col-sm-2 col-form-label">{{ field.label }}</label>
+                            <div class="col-sm-10">
+                                {% if field.field.widget.input_type == 'checkbox' %}
+                                    <input type="checkbox" name="{{ inline_form.prefix }}-{{ field.name }}" id="id_{{ inline_form.prefix }}-{{ field.name }}" class="form-control" aria-describedby="{{ inline_form.prefix }}-{{ field.name }}HelpBlock"{% if field.value == True %} checked{% endif %}>
+                                {% else %}
+                                    <input type="{{ field.field.widget.input_type }}" name="{{ inline_form.prefix }}-{{ field.name }}" id="id_{{ inline_form.prefix }}-{{ field.name }}" class="form-control" aria-describedby="{{ inline_form.prefix }}-{{ field.name }}HelpBlock" value="{% if field.value %}{{ field.value }}{% endif %}"{% if field.field.required %} required{% endif %}>
+                                {% endif %}
+                                {% if field.errors %}
+                                    <span class="form-text text-danger">{{ field.errors|striptags }}</span>
+                                {% endif %}
+                                <small class="form-text text-muted" id="{{ inline_form.prefix }}-{{ field.name }}HelpBlock">
+                                    {{ field.help_text | safe }}
+                                </small>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </fieldset>
         </div>
         <div class="submit-row float-sm-right">
             <button type="submit" class="btn btn-primary">
