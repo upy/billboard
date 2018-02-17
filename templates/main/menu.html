@@ -1,0 +1,24 @@
+{% load i18n %}
+<nav class="col-md-2 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
+    <div class="list-group border-0 card text-center text-md-left">
+
+        <a href="{% url 'profile' %}" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+            <span class="d-none d-md-inline">{% trans 'Profile' %}</span> </a>
+        <a href="{% url 'password_change' %}" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
+            <i class="fa fa-key" aria-hidden="true"></i>
+            <span class="d-none d-md-inline">{% trans 'Password change' %}</span>
+        </a>
+
+        <a href="{% url 'advertiser-list' %}" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
+            <i class="fa fa-building-o" aria-hidden="true"></i>
+            <span class="d-none d-md-inline">{% trans 'Customers' %}</span> </a>
+
+        <a href="{% url 'representative-list' %}" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <span class="d-none d-md-inline">{% trans 'Representatives' %}</span>
+        </a>
+
+
+    </div>
+</nav>

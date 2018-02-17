@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'compressor',
 
+    'main',
     'profiles',
     'advertisers',
 ]
