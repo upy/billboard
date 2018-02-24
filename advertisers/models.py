@@ -7,6 +7,8 @@ class Advertiser(models.Model):
     name = models.CharField(_('Name'), max_length=255,
                             help_text=_('Company name'))
     email = models.EmailField(_('E-mail'), help_text=_('E-mail address'))
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         default_permissions = ('add', 'change', 'delete', 'view')

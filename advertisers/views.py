@@ -17,7 +17,7 @@ class AdvertiserListView(PermissionRequiredMixin, ListView):
     """The view class for the list of the advertisers."""
     raise_exception = True
     permission_denied_message = _(
-        'You do not have permission to see advertisers.')
+        'You do not have permission to see customers.')
     permission_required = ('advertisers.view_advertiser',)
     model = models.Advertiser
     template_name = 'advertisers/advertiser_list.html'
@@ -29,25 +29,28 @@ class AdvertiserCreateView(SuccessMessageMixin, PermissionRequiredMixin,
     """The view class for creating a new advertiser."""
     raise_exception = True
     permission_denied_message = _(
-        'You do not have permission to add advertiser.')
+        'You do not have permission to add customer.')
     permission_required = ('advertisers.add_advertiser',)
     form_class = forms.AdvertiserForm
     model = models.Advertiser
-    success_message = _('Advertiser details were added.')
+    success_message = _('Customer details were added.')
     template_name = 'advertisers/advertiser_create_form.html'
     success_url = reverse_lazy('advertiser-list')
 
     def get(self, request, *args, **kwargs):
-        """
-        Handle GET requests: instantiate a blank version of the form and
-        formsets.
-        """
         self.object = None
         return self.render_to_response(self.get_context_data(
             form=self.get_form(),
-            address_form_set=forms.AddressFormSet(prefix='address'),
+            address_form_set=forms.AddressFormSet(prefix='post'),
             billing_address_form_set=forms.BillingAddressFormSet(
-                prefix='billing_address')))
+                prefix='billing')))
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
 
 
 @method_decorator(decorators, name='dispatch')
@@ -65,13 +68,9 @@ class AdvertiserUpdateView(SuccessMessageMixin, PermissionRequiredMixin,
     success_url = reverse_lazy('advertiser-list')
 
     def get(self, request, *args, **kwargs):
-        """
-        Handle GET requests: instantiate a blank version of the form and
-        formsets.
-        """
         self.object = self.get_object()
         return self.render_to_response(self.get_context_data(
             form=self.get_form(),
-            address_form_set=forms.AddressFormSet(prefix='address'),
+            address_form_set=forms.AddressFormSet(prefix='post'),
             billing_address_form_set=forms.BillingAddressFormSet(
-                prefix='billing_address')))
+                prefix='billing')))
