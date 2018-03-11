@@ -90,6 +90,36 @@ class AdvertiserUpdateView(SuccessMessageMixin, PermissionRequiredMixin,
         self.object = self.get_object()
         return self.render_to_response(self.get_context_data(
             form=self.get_form(),
-            address_form_set=forms.AddressFormSet(prefix='post'),
+            address_form_set=forms.AddressFormSet(prefix='post',
+                                                  instance=self.object),
             billing_address_form_set=forms.BillingAddressFormSet(
-                prefix='billing')))
+                prefix='billing', instance=self.object)))
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        address_form = forms.AddressFormSet(request.POST, prefix='post',
+                                            instance=self.object)
+        billing_address_form = forms.BillingAddressFormSet(self.request.POST,
+                                                           prefix='billing',
+                                                           instance=self.object)
+
+        if form.is_valid() and address_form.is_valid() and \
+                billing_address_form.is_valid():
+            return self.form_valid(form, address_form, billing_address_form)
+        else:
+            return self.form_invalid(form, address_form, billing_address_form)
+
+    def form_valid(self, form, address_form, billing_address_form):
+        response = super().form_valid(form)
+        address_form.instance = self.object
+        address_form.save()
+        billing_address_form.instance = self.object
+        billing_address_form.save()
+        return response
+
+    def form_invalid(self, form, address_form, billing_address_form):
+        return self.render_to_response(
+            self.get_context_data(form=form,
+                                  address_form_set=address_form,
+                                  billing_address_form_set=billing_address_form))
