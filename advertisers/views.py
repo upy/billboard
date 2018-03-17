@@ -66,6 +66,7 @@ class AdvertiserCreateView(SuccessMessageMixin, PermissionRequiredMixin,
         return response
 
     def form_invalid(self, form, address_form, billing_address_form):
+        self.object = None
         return self.render_to_response(
             self.get_context_data(form=form,
                                   address_form_set=address_form,
