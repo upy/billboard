@@ -29,7 +29,7 @@ class LoggedInRepresentativeUpdateView(SuccessMessageMixin, UpdateView):
         try:
             representative = self.request.user.representative
         except (AttributeError,):
-            raise PermissionDenied(_('Your profile does not exist.'))
+            raise PermissionDenied(_('You do not have a profile.'))
         else:
             return representative
 
