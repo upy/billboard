@@ -25,8 +25,8 @@ class BillingAddressForm(forms.ModelForm):
 
 AddressFormSet = inlineformset_factory(models.Advertiser, models.Address,
                                        form=AddressForm,
-                                       extra=1)
+                                       extra=1, can_delete=False)
 BillingAddressFormSet = inlineformset_factory(models.Advertiser,
                                               models.BillingAddress,
                                               form=BillingAddressForm,
-                                              extra=1)
+                                              extra=1, can_delete=False)
