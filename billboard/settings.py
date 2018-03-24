@@ -101,6 +101,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
+                'main.context_processors.google_api_key',
             ],
             'loaders': [
                 ('django.template.loaders.cached.Loader', [
@@ -231,6 +232,8 @@ LOGGING = {
         }
     }
 }
+
+GOOGLE_API_KEY = env('GOOGLE_API_KEY')
 
 if DEBUG:
     from fnmatch import fnmatch
