@@ -9,8 +9,8 @@
   "dependencies": {
     "bootstrap": "^4.0.0",
     "font-awesome": "^4.7.0",
-    "install": "^0.10.4",
+    "install": "^0.11.0",
     "jquery-slim": "^3.0.0",
-    "popper.js": "^1.12.9"
+    "popper.js": "^1.14.1"
   }
 }

@@ -1,5 +1,6 @@
 body {
   padding-top: 3.9rem;
+  font-size: small;
 }
 
 #sidebar {
@@ -33,7 +34,7 @@ body {
 
 #sidebar .list-group .list-group-item[aria-expanded="false"]::after {
   content: " \f0d7";
-  font-family: FontAwesome;
+  font-family: FontAwesome, sans-serif;
   display: inline;
   text-align: right;
   padding-left: 5px;
@@ -45,7 +46,7 @@ body {
 
 #sidebar .list-group .list-group-item[aria-expanded="true"]::after {
   content: " \f0da";
-  font-family: FontAwesome;
+  font-family: FontAwesome, sans-serif;
   display: inline;
   text-align: right;
   padding-left: 5px;
