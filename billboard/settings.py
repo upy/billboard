@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'main',
     'profiles',
     'advertisers',
+    'boards',
 ]
 
 MIDDLEWARE = [
