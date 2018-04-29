@@ -176,8 +176,4 @@
             </button>
         </div>
     </form>
-    {% compress js %}
-        <script src="{% static 'src/js/google_map.js' %}" type="application/javascript"></script>
-    {% endcompress %}
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_API_KEY }}&libraries=places&callback=initMap" async defer></script>
 {% endblock %}
