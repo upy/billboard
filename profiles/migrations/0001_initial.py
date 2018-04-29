@@ -9,34 +9,39 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
     initial = True
 
-    dependencies = [
-        ('auth', '0009_alter_user_last_name_max_length'),
-    ]
+    dependencies = [("auth", "0009_alter_user_last_name_max_length")]
 
     operations = [
         migrations.CreateModel(
-            name='Representative',
+            name="Representative",
             fields=[
-                ('user_ptr', models.OneToOneField(
-                    auto_created=True,
-                    on_delete=django.db.models.deletion.CASCADE,
-                    parent_link=True,
-                    primary_key=True,
-                    serialize=False,
-                    to=settings.AUTH_USER_MODEL)),
-                ('phone',
-                 models.CharField(help_text='ex: +901234567890', max_length=30,
-                                  verbose_name='Phone')),
+                (
+                    "user_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "phone",
+                    models.CharField(
+                        help_text="ex: +901234567890",
+                        max_length=30,
+                        verbose_name="Phone",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Representative',
-                'verbose_name_plural': 'Representatives',
-                'db_table': 'representative',
-                'default_permissions': ('add', 'change', 'delete', 'view'),
+                "verbose_name": "Representative",
+                "verbose_name_plural": "Representatives",
+                "db_table": "representative",
+                "default_permissions": ("add", "change", "delete", "view"),
             },
-            bases=('auth.user',),
-            managers=[
-                ('objects', django.contrib.auth.models.UserManager()),
-            ],
-        ),
+            bases=("auth.user",),
+            managers=[("objects", django.contrib.auth.models.UserManager())],
+        )
     ]

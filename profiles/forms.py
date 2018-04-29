@@ -4,7 +4,7 @@ from . import models
 
 
 class RepresentativeForm(forms.ModelForm):
+
     class Meta:
         model = models.Representative
-        fields = ['username', 'first_name', 'last_name', 'email', 'phone',
-                  'is_active']
+        fields = ["username", "first_name", "last_name", "email", "phone", "is_active"]

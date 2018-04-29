@@ -13,5 +13,5 @@ class BillingAddressInline(admin.StackedInline):
 
 @admin.register(models.Advertiser)
 class AdvertiserAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email')
+    list_display = ("name", "email")
     inlines = [AddressInline, BillingAddressInline]

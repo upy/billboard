@@ -2,11 +2,11 @@ django==2.0.4
 django-appconf==1.0.2
 django-compressor==2.2
 django-environ==0.4.4
-django-extensions==2.0.6
+django-extensions==2.0.7
 factory_boy==2.10
 psycopg2-binary==2.7.4
 python-memcached==1.59
-pytz==2018.3
+pytz==2018.4
 six==1.11
 tzlocal==1.5.1
 uuid==1.30

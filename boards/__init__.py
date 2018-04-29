@@ -1,1 +1,1 @@
-default_app_config = 'boards.apps.BoardsConfig'
+default_app_config = "boards.apps.BoardsConfig"

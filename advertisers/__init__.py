@@ -1,1 +1,1 @@
-default_app_config = 'advertisers.apps.AdvertisersConfig'
+default_app_config = "advertisers.apps.AdvertisersConfig"
