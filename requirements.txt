@@ -1,9 +1,9 @@
-django==2.0.4
+django==2.0.5
 django-appconf==1.0.2
 django-compressor==2.2
 django-environ==0.4.4
 django-extensions==2.0.7
-factory_boy==2.10
+factory_boy==2.11.1
 psycopg2-binary==2.7.4
 python-memcached==1.59
 pytz==2018.4
