@@ -9,4 +9,3 @@ python-memcached==1.59
 pytz==2018.4
 six==1.11
 tzlocal==1.5.1
-uuid==1.30
