@@ -10,4 +10,4 @@
 
 ``yarn install`` or ``npm install``
 
-#### Project status: `development` 
+#### Project status: `WIP` 
