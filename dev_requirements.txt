@@ -3,7 +3,7 @@ coverage==4.5.1
 ipython==7.1.1
 django-debug-toolbar==1.10.1
 setuptools==40.2.0
-pylint==2.1.1
+pylint==2.2.2
 Sphinx==1.8.1
 sphinx_issues==1.0.0
 sphinx_rtd_theme==0.4.2
