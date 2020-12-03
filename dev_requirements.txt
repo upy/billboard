@@ -1,7 +1,7 @@
 -r requirements.txt
 coverage==4.5.2
 ipython==7.1.1
-django-debug-toolbar==1.10.1
+django-debug-toolbar==3.2
 setuptools==40.8.0
 pylint==2.1.1
 Sphinx==1.8.4
