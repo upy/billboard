@@ -8,4 +8,4 @@ Sphinx==1.8.4
 sphinx_issues==1.0.0
 sphinx_rtd_theme==0.4.2
 sphinxcontrib-napoleon==0.7
-Werkzeug==0.15.6
+Werkzeug==2.0.1
