@@ -1,5 +1,5 @@
 -r requirements.txt
-coverage==4.5.2
+coverage==6.0
 ipython==7.1.1
 django-debug-toolbar==1.10.1
 setuptools==40.8.0
